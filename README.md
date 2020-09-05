@@ -4,15 +4,12 @@ This parser processes any .nt file according to the grammar specified in [https:
 
 ## Build
 
-`
+```
 mkdir -p build
-
 cd build
-
 cmake ..
-
 make
-`
+```
 
 * This will generate the static library libntparser.a
 * Also a sample split_nt program that separates IRIS, Blank Nodes and Literals in 3 different files, separated by new lines
