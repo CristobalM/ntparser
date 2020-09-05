@@ -3,9 +3,6 @@
 #include <fstream>
 #include <iostream>
 
-extern "C" {
-#include "triple_proc.h"
-}
 
 std::ofstream iris, blanks, literals;
 

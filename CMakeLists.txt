@@ -26,4 +26,6 @@ set(GENERATED_SOURCES gen/scanner.c gen/parser.tab.c)
 add_library(ntparser ${GENERATED_SOURCES} src/nt_parser.cpp src/istream_c.cpp)
 
 add_executable(split_nt src/split_nt.cpp)
+add_executable(example src/example.cpp)
 target_link_libraries(split_nt ntparser)
+target_link_libraries(example ntparser)
