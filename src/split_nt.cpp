@@ -46,8 +46,8 @@ int main(int argc, char **argv) {
   }
 
   std::ofstream iris(argv[2], std::ios::out);
-  std::ofstream blanks(argv[3], std::ios::out);
-  std::ofstream literals(argv[4], std::ios::out);
+  std::ofstream literals(argv[3], std::ios::out);
+  std::ofstream blanks(argv[4], std::ios::out);
 
   Ofstreams ofstreams(iris, blanks, literals);
   NTParser parser(&nt, processor, &ofstreams);
