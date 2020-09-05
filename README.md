@@ -4,12 +4,12 @@ This parser processes any .nt file according to the grammar specified in [https:
 
 ## Build
 
-`
+```
 mkdir -p build
 cd build
 cmake ..
 make
-`
+```
 
 * This will generate the static library libntparser.a
 * Also a sample split_nt program that separates IRIS, Blank Nodes and Literals in 3 different files, separated by new lines
@@ -31,8 +31,8 @@ void processor(NTTriple *ntriple){
 }
 
 int main(int argc, char **argv){
-
-    NTParser parser(istream_ptr, processor);
+    std::ifstream ifs(argv[1]);
+    NTParser parser(&ifs, processor);
     parser.parse();
 
 }
