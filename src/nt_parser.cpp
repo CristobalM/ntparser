@@ -22,7 +22,7 @@ void NTParser::parse() {
   int err;
   err = yylex_init_extra(&proc, &scanner);
   if (err) {
-    printf("There was an error while initializing scanner %d %d\n", err, errno);
+    std::cerr << "There was an error while initializing scanner: " << err << ", " << errno << std::endl;
     return;
   }
   yyset_in(nullptr, scanner);
