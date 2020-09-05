@@ -31,8 +31,8 @@ void processor(NTTriple *ntriple){
 }
 
 int main(int argc, char **argv){
-
-    NTParser parser(istream_ptr, processor);
+    std::ifstream ifs(argv[1]);
+    NTParser parser(&ifs, processor);
     parser.parse();
 
 }
