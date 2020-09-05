@@ -22,7 +22,7 @@ make
 #include <iostream>
 #include <nt_parser.hpp>
 
-void processor(NTTriple *ntriple) {
+void processor(NTTriple *ntriple, void *) {
   // ntriple->subject, ntriple->predicate, ntriple->object
   // each one has a "char *data" containing the full string of the resource
   // also each resource has a type that can be one of IRI, LITERAL or BLANK_NODE
