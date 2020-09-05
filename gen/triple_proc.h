@@ -18,15 +18,15 @@ typedef struct {
   NTRes object;
 } NTTriple;
 
-typedef void (*proc_fun_t)(NTTriple *);
+typedef void (*proc_fun_t)(NTTriple *, void *);
 typedef void *istream_c;
 
 typedef struct {
   proc_fun_t proc_fun;
   istream_c is;
+  void *data;
 } ProcDataScan;
 
-void triple_proc(NTTriple *ntriple);
 int istream_c_read(istream_c is, char *buf, int size, int *total_read);
 
 #endif

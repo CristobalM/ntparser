@@ -3,28 +3,32 @@
 #include <fstream>
 #include <iostream>
 
+struct Ofstreams {
+  std::ofstream &iris, &blanks, &literals;
+  Ofstreams(std::ofstream &iris, std::ofstream &blanks, std::ofstream &literals)
+      : iris(iris), blanks(blanks), literals(literals) {}
+};
 
-std::ofstream iris, blanks, literals;
-
-void cond_write(NTRes &res) {
+void cond_write(NTRes &res, Ofstreams &o) {
   char *data = res.data;
   switch (res.type) {
   case IRI:
-    iris << data << "\n";
+    o.iris << data << "\n";
     break;
   case LITERAL:
-    literals << data << "\n";
+    o.literals << data << "\n";
     break;
   case BLANK_NODE:
-    blanks << data << "\n";
+    o.blanks << data << "\n";
     break;
   }
 }
 
-void processor(NTTriple *triple) {
-  cond_write(triple->subject);
-  cond_write(triple->predicate);
-  cond_write(triple->object);
+void processor(NTTriple *triple, void *data) {
+  auto &ofstreams = *reinterpret_cast<Ofstreams *>(data);
+  cond_write(triple->subject, ofstreams);
+  cond_write(triple->predicate, ofstreams);
+  cond_write(triple->object, ofstreams);
 }
 
 int main(int argc, char **argv) {
@@ -41,11 +45,13 @@ int main(int argc, char **argv) {
     std::cerr << "Cant open file" << argv[1] << std::endl;
   }
 
-  iris = std::ofstream(argv[2], std::ios::out);
-  blanks = std::ofstream(argv[3], std::ios::out);
-  literals = std::ofstream(argv[4], std::ios::out);
+  std::ofstream iris(argv[2], std::ios::out);
+  std::ofstream blanks(argv[3], std::ios::out);
+  std::ofstream literals(argv[4], std::ios::out);
 
-  NTParser parser(&nt, processor);
+  Ofstreams ofstreams(iris, blanks, literals);
+  NTParser parser(&nt, processor, &ofstreams);
+
   parser.parse();
   return 0;
 }

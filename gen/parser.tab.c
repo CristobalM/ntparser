@@ -1354,7 +1354,7 @@ yyreduce:
                                    {
         NTTriple ntriple = {(yyvsp[-3].ntRes), (yyvsp[-2].ntRes), (yyvsp[-1].ntRes)};
         ProcDataScan *proc = yyget_extra(scanner);
-        proc->proc_fun(&ntriple); 
+        proc->proc_fun(&ntriple, proc->data);
         clean_triple(&ntriple);}
 #line 1360 "parser.tab.c"
     break;

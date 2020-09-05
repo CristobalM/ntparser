@@ -7,13 +7,17 @@ extern "C" {
 
 #include <iostream>
 
-NTParser::NTParser(std::istream *is, proc_fun_t fun) : fun(fun), is(is) {}
+NTParser::NTParser(std::istream *is, proc_fun_t fun, void *data)
+    : fun(fun), is(is), data(data) {}
+NTParser::NTParser(std::istream *is, proc_fun_t fun)
+    : NTParser(is, fun, nullptr) {}
 
 void NTParser::parse() {
   yyscan_t scanner;
   ProcDataScan proc;
   proc.proc_fun = fun;
   proc.is = reinterpret_cast<void *>(is);
+  proc.data = data;
 
   int err;
   err = yylex_init_extra(&proc, &scanner);

@@ -50,7 +50,7 @@ triple:
       subject predicate object DOT {
         NTTriple ntriple = {$1, $2, $3};
         ProcDataScan *proc = yyget_extra(scanner);
-        proc->proc_fun(&ntriple); 
+        proc->proc_fun(&ntriple, proc->data);
         clean_triple(&ntriple);}
       ;
 
