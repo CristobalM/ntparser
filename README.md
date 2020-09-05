@@ -6,8 +6,11 @@ This parser processes any .nt file according to the grammar specified in [https:
 
 `
 mkdir -p build
+
 cd build
+
 cmake ..
+
 make
 `
 
