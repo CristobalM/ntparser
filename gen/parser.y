@@ -43,7 +43,6 @@ ProcDataScan *yyget_extra(yyscan_t scanner);
 ntfile:
       ntfile triple EOL
       | ntfile triple
-      | EOL
       |
       ;
 

@@ -11,7 +11,7 @@ extern "C" {
 class NTParser {
 
 public:
-  typedef void(*proc_fun_t)(NTTriple *); //std::function<void(NTTriple *)>;
+  typedef void (*proc_fun_t)(NTTriple *); // std::function<void(NTTriple *)>;
 
   NTParser(std::istream *is, proc_fun_t fun);
 
