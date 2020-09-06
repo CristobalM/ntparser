@@ -382,20 +382,20 @@ struct yy_trans_info
 static const flex_int16_t yy_accept[154] =
     {   0,
         0,    0,   10,    8,    6,    4,    4,    8,    8,    5,
-        8,    8,    6,    4,    0,    2,    0,    0,    0,    1,
-        0,    0,    0,    0,    0,    0,    7,    0,    0,    3,
+        8,    8,    6,    4,    0,    1,    0,    0,    0,    3,
+        0,    0,    0,    0,    0,    0,    7,    0,    0,    2,
         0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-        0,    0,    0,    0,    2,    0,    0,    0,    0,    0,
-        3,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+        0,    0,    0,    0,    1,    0,    0,    0,    0,    0,
+        2,    0,    0,    0,    0,    0,    0,    0,    0,    0,
         0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
         0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
         0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-        0,    0,    3,    0,    0,    0,    0,    0,    0,    0,
+        0,    0,    2,    0,    0,    0,    0,    0,    0,    0,
 
         0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-        0,    0,    3,    0,    0,    0,    2,    0,    2,    0,
-        0,    0,    0,    0,    3,    3,    0,    0,    0,    3,
-        0,    0,    0,    0,    0,    3,    0,    0,    0,    0,
+        0,    0,    2,    0,    0,    0,    1,    0,    1,    0,
+        0,    0,    0,    0,    2,    2,    0,    0,    0,    2,
+        0,    0,    0,    0,    0,    2,    0,    0,    0,    0,
         0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
         0,    0,    0
     } ;
@@ -1021,17 +1021,17 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 58 "lexer.l"
-{ yylval->string = strdup(yytext); return IRIREF;  }
+{yylval->string = strdup(yytext); return STRING_LITERAL_QUOTE;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
 #line 59 "lexer.l"
-{yylval->string = strdup(yytext); return STRING_LITERAL_QUOTE;}
+{yylval->string = strdup(yytext); return BLANK_NODE_LABEL; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
 #line 60 "lexer.l"
-{yylval->string = strdup(yytext); return BLANK_NODE_LABEL; }
+{ yylval->string = strdup(yytext); return IRIREF;  }
 	YY_BREAK
 case 4:
 /* rule 4 can match eol */
