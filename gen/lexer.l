@@ -22,7 +22,7 @@ else if(err == ISTREAM_C_BAD) { \
 
 %}
 
-%option noinput nounput noyywrap nodefault
+%option noyywrap
 %option yylineno
 %option reentrant bison-bridge
 
@@ -59,9 +59,10 @@ LANG_TAG "@"{ALPH_LETTER}+("-"{ALPH_NUMERIC_LETTER}+)*
 "_:"({PN_CHARS_U}|[0-9])(({PN_CHARS}|".")*{PN_CHARS})? {yylval->string = strdup(yytext); return BLANK_NODE_LABEL; }
 ("^^"{IRI_REF}|{LANG_TAG}) { yylval->string = strdup(yytext); return LITERAL_SUFFIX;}
 
-[\n\r]+ { return EOL; }
+[\n\r]+ ;
 "." { return DOT;}
 [ \t]+ ;
+'\0' ;
 .   yyerror(&yyscanner, "Unknown Character");
 
 

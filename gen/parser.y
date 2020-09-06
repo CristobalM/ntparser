@@ -33,7 +33,6 @@ ProcDataScan *yyget_extra(yyscan_t scanner);
 %token <string> BLANK_NODE_LABEL;
 %token <string> LITERAL_SUFFIX;
 %token DOT
-%token EOL;
 
 %type <ntRes> subject predicate object
 %type <string> literal;
@@ -41,8 +40,7 @@ ProcDataScan *yyget_extra(yyscan_t scanner);
 %%
 
 ntfile:
-      ntfile triple EOL
-      | ntfile triple
+      ntfile triple
       |
       ;
 

@@ -65,8 +65,7 @@ typedef void * yyscan_t;
     STRING_LITERAL_QUOTE = 259,    /* STRING_LITERAL_QUOTE  */
     BLANK_NODE_LABEL = 260,        /* BLANK_NODE_LABEL  */
     LITERAL_SUFFIX = 261,          /* LITERAL_SUFFIX  */
-    DOT = 262,                     /* DOT  */
-    EOL = 263                      /* EOL  */
+    DOT = 262                      /* DOT  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -80,7 +79,7 @@ union YYSTYPE
     char *string;
     NTRes ntRes;
 
-#line 84 "parser.tab.h"
+#line 83 "parser.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
