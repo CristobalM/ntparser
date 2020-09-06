@@ -13,7 +13,6 @@ typedef void * yyscan_t;
 }
 
 %code {
-char *concat_s(char *s1, char *s2);
 int clean_triple(NTTriple *ntriple);
 int yyerror(yyscan_t scanner, const char *msg);
 int yylex(YYSTYPE* yylvalp, yyscan_t scanner);
@@ -31,7 +30,6 @@ ProcDataScan *yyget_extra(yyscan_t scanner);
 %token <string> IRIREF;
 %token <string> STRING_LITERAL_QUOTE;
 %token <string> BLANK_NODE_LABEL;
-%token <string> LITERAL_SUFFIX;
 %token DOT
 
 %type <ntRes> subject predicate object
@@ -68,26 +66,10 @@ object:
 
 literal:
        STRING_LITERAL_QUOTE { $$ = $1; }
-       | STRING_LITERAL_QUOTE LITERAL_SUFFIX { $$ = concat_s($1, $2);}
        ;
 
 
 %%
-
-char *concat_s(char *s1, char *s2){
-
-    const size_t sz_1 = strlen(s1);
-    const size_t sz_2 = strlen(s2);
-
-    char *result = malloc(sz_1 + sz_2 + 1);
-    memcpy(result, s1, sz_1);
-    memcpy(result + sz_1, s2, sz_2+1);
-
-    free(s1);
-    free(s2);
-
-    return result;
-}
 
 int clean_triple(NTTriple *ntriple){
     free(ntriple->subject.data);

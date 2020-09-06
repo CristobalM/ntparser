@@ -51,13 +51,13 @@ STRING_LITERAL_Q ([^\x22\x5C\xA\xD]|{ECHAR}|{UCHAR})
 
 IRI_REF "<"{IRI_VALID}*">"
 LANG_TAG "@"{ALPH_LETTER}+("-"{ALPH_NUMERIC_LETTER}+)*
+SUFFIX_LITERAL ("^^"{IRI_REF}|{LANG_TAG})
 
 %%
 
 {IRI_REF} { yylval->string = strdup(yytext); return IRIREF;  }
-\"{STRING_LITERAL_Q}*\" {yylval->string = strdup(yytext); return STRING_LITERAL_QUOTE;}
+\"{STRING_LITERAL_Q}*\"{SUFFIX_LITERAL}? {yylval->string = strdup(yytext); return STRING_LITERAL_QUOTE;}
 _:({PN_CHARS_U}|[0-9])(({PN_CHARS}|".")*{PN_CHARS})? {yylval->string = strdup(yytext); return BLANK_NODE_LABEL; }
-("^^"{IRI_REF}|{LANG_TAG}) { yylval->string = strdup(yytext); return LITERAL_SUFFIX;}
 
 [\n\r]+ ;
 "." { return DOT;}

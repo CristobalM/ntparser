@@ -64,8 +64,7 @@ typedef void * yyscan_t;
     IRIREF = 258,                  /* IRIREF  */
     STRING_LITERAL_QUOTE = 259,    /* STRING_LITERAL_QUOTE  */
     BLANK_NODE_LABEL = 260,        /* BLANK_NODE_LABEL  */
-    LITERAL_SUFFIX = 261,          /* LITERAL_SUFFIX  */
-    DOT = 262                      /* DOT  */
+    DOT = 261                      /* DOT  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -74,12 +73,12 @@ typedef void * yyscan_t;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 26 "parser.y"
+#line 25 "parser.y"
 
     char *string;
     NTRes ntRes;
 
-#line 83 "parser.tab.h"
+#line 82 "parser.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
