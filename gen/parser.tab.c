@@ -493,8 +493,8 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    43,    43,    44,    48,    56,    57,    61,    65,    66,
-      67,    71,    72
+       0,    42,    42,    43,    47,    55,    56,    60,    64,    65,
+      66,    70,    71
 };
 #endif
 
@@ -555,7 +555,7 @@ static const yytype_int8 yypact[] =
      means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       3,     0,     1,     6,     5,     2,     0,     7,     0,    10,
+       2,     0,     1,     6,     5,     3,     0,     7,     0,    10,
       11,     9,     0,     8,    12,     4
 };
 
@@ -602,7 +602,7 @@ static const yytype_int8 yyr1[] =
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_int8 yyr2[] =
 {
-       0,     2,     2,     0,     4,     1,     1,     1,     1,     1,
+       0,     2,     0,     2,     4,     1,     1,     1,     1,     1,
        1,     1,     2
 };
 
@@ -1349,7 +1349,7 @@ yyreduce:
   switch (yyn)
     {
   case 4: /* triple: subject predicate object DOT  */
-#line 48 "parser.y"
+#line 47 "parser.y"
                                    {
         NTTriple ntriple = {(yyvsp[-3].ntRes), (yyvsp[-2].ntRes), (yyvsp[-1].ntRes)};
         ProcDataScan *proc = yyget_extra(scanner);
@@ -1359,49 +1359,49 @@ yyreduce:
     break;
 
   case 5: /* subject: BLANK_NODE_LABEL  */
-#line 56 "parser.y"
+#line 55 "parser.y"
                         { NTRes res = {(yyvsp[0].string), BLANK_NODE}; (yyval.ntRes) = res;}
 #line 1365 "parser.tab.c"
     break;
 
   case 6: /* subject: IRIREF  */
-#line 57 "parser.y"
+#line 56 "parser.y"
                  { NTRes res = {(yyvsp[0].string), IRI}; (yyval.ntRes) = res; }
 #line 1371 "parser.tab.c"
     break;
 
   case 7: /* predicate: IRIREF  */
-#line 61 "parser.y"
+#line 60 "parser.y"
               { NTRes res = {(yyvsp[0].string), IRI}; (yyval.ntRes) = res; }
 #line 1377 "parser.tab.c"
     break;
 
   case 8: /* object: literal  */
-#line 65 "parser.y"
+#line 64 "parser.y"
                { NTRes res = {(yyvsp[0].string), LITERAL}; (yyval.ntRes) = res;}
 #line 1383 "parser.tab.c"
     break;
 
   case 9: /* object: BLANK_NODE_LABEL  */
-#line 66 "parser.y"
+#line 65 "parser.y"
                          { NTRes res = {(yyvsp[0].string), BLANK_NODE}; (yyval.ntRes) = res;}
 #line 1389 "parser.tab.c"
     break;
 
   case 10: /* object: IRIREF  */
-#line 67 "parser.y"
+#line 66 "parser.y"
                { NTRes res = {(yyvsp[0].string), IRI}; (yyval.ntRes) = res; }
 #line 1395 "parser.tab.c"
     break;
 
   case 11: /* literal: STRING_LITERAL_QUOTE  */
-#line 71 "parser.y"
+#line 70 "parser.y"
                             { (yyval.string) = (yyvsp[0].string); }
 #line 1401 "parser.tab.c"
     break;
 
   case 12: /* literal: STRING_LITERAL_QUOTE LITERAL_SUFFIX  */
-#line 72 "parser.y"
+#line 71 "parser.y"
                                              { (yyval.string) = concat_s((yyvsp[-1].string), (yyvsp[0].string));}
 #line 1407 "parser.tab.c"
     break;
@@ -1632,7 +1632,7 @@ yyreturn:
   return yyresult;
 }
 
-#line 76 "parser.y"
+#line 75 "parser.y"
 
 
 char *concat_s(char *s1, char *s2){

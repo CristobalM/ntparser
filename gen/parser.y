@@ -40,8 +40,7 @@ ProcDataScan *yyget_extra(yyscan_t scanner);
 %%
 
 ntfile:
-      ntfile triple
-      |
+      | ntfile triple
       ;
 
 triple:
